@@ -4,6 +4,7 @@ const btns = document.querySelectorAll('.add__btn');
 const addBtns = document.querySelectorAll('.add__item-btn');
 const textareas = document.querySelectorAll('.textarea');
 const lists = document.querySelectorAll('.list');
+const canselBtns = document.querySelectorAll('.cansel__item-btn');
 let value;
 
 function addTask() {
@@ -36,8 +37,22 @@ function addTask() {
       const form = e.target.closest('.wrapper').querySelector('.form');
       form.style.display = 'none';
       const btn = e.target.closest('.wrapper').querySelector('.add__btn');
-      btn.style.display = 'block';
+      btn.style.display = 'flex';
+    });
+  }
+
+  for (let a = 0; a < canselBtns.length; a++) {
+    const canselBtn = canselBtns[a];
+    canselBtn.addEventListener('click', (e) => {
+      const textarea = e.target.closest('.wrapper').querySelector('.textarea');
+      textarea.value = '';
+      value = '';
+      const form = e.target.closest('.wrapper').querySelector('.form');
+      form.style.display = 'none';
+      const btn = e.target.closest('.wrapper').querySelector('.add__btn');
+      btn.style.display = 'flex';
     });
   }
 }
+
 addTask();
