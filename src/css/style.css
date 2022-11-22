@@ -53,16 +53,18 @@ a {
 }
 
 .list__item {
+  display: flex;
   background-color: #fefefe;
   border-radius: 3px;
   padding: 10px;
   text-align: center;
   margin: 4px 0;
-  cursor: pointer;
+  cursor: grabbing;
   font-size: 14px;
   font-weight: 400px;
   outline: none;
   border: none;
+  position: relative;
 }
 
 .add__btn {
@@ -128,4 +130,21 @@ a {
   cursor: pointer;
   margin-left: 82px;
   font-size: 16px;
+}
+
+.newItemDelete {
+  display: none;
+}
+
+.visible {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: none;
+  padding: 0;
+  margin: 2px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
 }

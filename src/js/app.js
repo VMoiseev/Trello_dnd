@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
 const btns = document.querySelectorAll('.add__btn');
@@ -30,6 +32,31 @@ function addTask() {
       newItem.classList.add('list__item');
       newItem.textContent = value;
       lists[j].append(newItem);
+
+      newItem.addEventListener('mouseover', activeNewItem);
+      newItem.addEventListener('mouseout', deactiveNewItem);
+
+      const newItemDelete = document.createElement('button');
+      newItemDelete.className = 'newItemDelete';
+      newItemDelete.textContent = ('X');
+      newItem.appendChild(newItemDelete);
+      newItemDelete.addEventListener('click', deleteNewItem);
+
+      function activeNewItem(e) {
+        e.currentTarget.classList.add('active');
+        e.currentTarget.querySelector('.newItemDelete').classList.add('visible');
+      }
+
+      function deactiveNewItem(e) {
+        e.currentTarget.classList.remove('active');
+        e.currentTarget.querySelector('.newItemDelete').classList.remove('visible');
+      }
+
+      function deleteNewItem(e) {
+        e.preventDefault();
+        e.target.closest('.newItem');
+        newItem.remove();
+      }
 
       const textarea = e.target.closest('.wrapper').querySelector('.textarea');
       textarea.value = '';
