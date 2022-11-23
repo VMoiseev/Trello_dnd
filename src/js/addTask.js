@@ -2,6 +2,9 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
+
+import dragNdrop from './dnd';
+
 const btns = document.querySelectorAll('.add__btn');
 const addBtns = document.querySelectorAll('.add__item-btn');
 const textareas = document.querySelectorAll('.textarea');
@@ -83,3 +86,4 @@ function addTask() {
 }
 
 addTask();
+dragNdrop();
