@@ -1,9 +1,11 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-shadow */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-loop-func */
 /* eslint-disable no-plusplus */
 
 import dragNdrop from './dnd';
+// import { save, load } from './localStorage';
 
 const btns = document.querySelectorAll('.add__btn');
 const addBtns = document.querySelectorAll('.add__item-btn');
@@ -12,7 +14,7 @@ const lists = document.querySelectorAll('.list');
 const canselBtns = document.querySelectorAll('.cansel__item-btn');
 let value;
 
-function addTask() {
+export default function addTask() {
   for (let i = 0; i < btns.length; i++) {
     const btn = btns[i];
     btn.addEventListener('click', (e) => {
@@ -87,3 +89,9 @@ function addTask() {
 
 addTask();
 dragNdrop();
+
+// setInterval(() => {
+//   save();
+// }, 4000);
+
+// load();
