@@ -90,8 +90,8 @@ export default function addTask() {
 addTask();
 dragNdrop();
 
+// load();
+
 // setInterval(() => {
 //   save();
-// }, 4000);
-
-// load();
+// }, 0);
