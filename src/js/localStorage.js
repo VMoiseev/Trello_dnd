@@ -1,6 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import addTask from './addTask';
 
+// Татьяна, localStorage теперь записывает данные в сторедж, но только первого столбца,
+// но load не работает почему-то даже для одного столбца.
+
 const wrapperWithListItems = document.querySelector('.wrapper');
 
 export function save() {
