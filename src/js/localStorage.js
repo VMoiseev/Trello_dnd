@@ -1,36 +1,31 @@
 // eslint-disable-next-line import/no-cycle
-// import addTask from './addTask';
+import addTask from './addTask';
 
-// const wrappers = document.querySelectorAll('.wrapper');
+const wrapperWithListItems = document.querySelector('.wrapper');
 
-// export function save() {
-//   for (const wrapper of wrappers) {
-//     const listItems = [];
+export function save() {
+  const cards = [];
 
-//     const listItemsEls = Array.from(wrapper.querySelectorAll('.list__item'));
-//     if (listItemsEls) {
-//       listItemsEls.forEach((item) => {
-//         listItems.push(item.textContent);
-//       });
-//     }
+  const cardsEls = Array.from(wrapperWithListItems.querySelectorAll('.list__item'));
+  if (cardsEls) {
+    cardsEls.forEach((item) => {
+      cards.push(item.textContent);
+    });
+  }
+  localStorage.setItem('cards', JSON.stringify({ listItems: cards }));
+}
 
-//     localStorage.setItem('listItems', JSON.stringify({ list__items: listItems }));
-//   }
-// }
+export function load() {
+  let savedCards;
 
-// export function load() {
-//   for (const wrapper of wrappers) {
-//     let savedListItems;
-
-//     try {
-//       savedListItems = JSON.parse(localStorage.getItem('listItems'));
-//       if (savedListItems.list__items) {
-//         savedListItems.list__items.forEach((item) => {
-//           addTask(item, wrapper);
-//         });
-//       }
-//     } catch (e) {
-//       throw new Error('Invalid listItems');
-//     }
-//   }
-// }
+  try {
+    savedCards = JSON.parse(localStorage.getItem('cards'));
+    if (savedCards.listItems) {
+      savedCards.listItems.forEach((item) => {
+        addTask(item, wrapperWithListItems);
+      });
+    }
+  } catch (e) {
+    throw new Error('Invalid cards');
+  }
+}

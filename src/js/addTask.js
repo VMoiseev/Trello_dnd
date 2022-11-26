@@ -5,7 +5,7 @@
 /* eslint-disable no-plusplus */
 
 import dragNdrop from './dnd';
-// import { save, load } from './localStorage';
+import { save, load } from './localStorage';
 
 const btns = document.querySelectorAll('.add__btn');
 const addBtns = document.querySelectorAll('.add__item-btn');
@@ -90,8 +90,8 @@ export default function addTask() {
 addTask();
 dragNdrop();
 
-// load();
+setInterval(() => {
+  save();
+}, 1000);
 
-// setInterval(() => {
-//   save();
-// }, 0);
+load();
